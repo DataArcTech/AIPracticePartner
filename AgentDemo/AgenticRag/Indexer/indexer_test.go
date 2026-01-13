@@ -19,7 +19,7 @@ func TestIndexer(t *testing.T) {
 
 	/*将文档索引到ES8*/
 	testFiles := []string{
-		`k:\go_projects\AIPracticePartner\test_docs\GlobalPowerMultiCurrencyPlan3_tc.docx`,
+		`k:\go_projects\AIPracticePartner\test_docs\GlobalPowerMultiCurrencyPlan3-页面-12.pdf`,
 	}
 
 	for _, filePath := range testFiles {

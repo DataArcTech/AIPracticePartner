@@ -1,13 +1,11 @@
 # AI Practice Partner - Agent Demo
 
 ## 项目简介
-
 本项目是一个基于 Go 语言实现的 Agentic RAG（检索增强生成）演示系统，旨在展示如何构建一个具备自主检索、思考和回答能力的智能体。系统采用了 CloudWeGo Eino 框架进行编排，集成了 Elasticsearch 混合检索、查询重写（Rewrite）、结果重排（Rerank）等高级 RAG 技术。
 
 ## 核心设计思路
 
 ### 1. 架构概览
-
 项目采用模块化设计，主要包含以下核心组件：
 
 - **Agent (智能体)**: 基于 ReAct 范式，负责理解用户意图、规划任务并调用工具。
@@ -24,7 +22,6 @@
 ### 2. 关键流程图
 
 #### 智能体执行流程 (BaseAgent)
-
 ```mermaid
 graph TD
     %% 样式定义
@@ -40,10 +37,10 @@ graph TD
         direction TB
         AgentStart --> AgentLoop{智能体思考}
         class AgentLoop decision
-  
+    
         AgentLoop -->|需要更多信息| ToolRouter{工具路由}
         class ToolRouter decision
-  
+    
         AgentLoop -->|任务完成| FinalAnswer[最终答案]
         class FinalAnswer agent
     end
@@ -53,18 +50,18 @@ graph TD
         direction TB
         RewritePhase[重写搜索词模型]
         class RewritePhase rag
-  
+    
         OptimizedQuery[优化后的查询词]
         OriginalQuery[使用原始查询词]
-  
+    
         RetrievePhase[基础检索器<br/>混合检索: 向量+关键词]
         class RetrievePhase rag
-  
+    
         RawDocs[粗排文档]
-  
+    
         RerankPhase{重排模型}
         class RerankPhase decision
-  
+    
         RerankedDocs[重排文档]
         class RerankedDocs rag
         RawDocsFallback[降级: 粗排文档]
@@ -73,13 +70,13 @@ graph TD
         %% RAG 内部连线
         RewritePhase -->|成功| OptimizedQuery
         RewritePhase -.->|失败| OriginalQuery
-  
+    
         OptimizedQuery --> RetrievePhase
         OriginalQuery --> RetrievePhase
-  
+    
         RetrievePhase --> RawDocs
         RawDocs --> RerankPhase
-  
+    
         RerankPhase -->|成功| RerankedDocs
         RerankPhase -.->|失败| RawDocsFallback
     end
@@ -99,7 +96,6 @@ graph TD
 ## 快速开始
 
 ### 前置要求
-
 - Go 1.18+
 - Elasticsearch 8.x
 - OpenAI 兼容的 LLM API Key (配置在 `model.go` 等文件中)
@@ -108,6 +104,7 @@ graph TD
 
 1. **环境配置**:
    确保本地已安装并启动 Elasticsearch，并在代码中配置好连接信息（如 `Common/es_client.go`）。
+
 2. **运行测试**:
    项目入口位于 `AgentDemo/main.go`，可以直接运行该文件启动演示。
 
@@ -115,6 +112,7 @@ graph TD
    cd AgentDemo
    go run main.go
    ```
+
 3. **测试逻辑**:
    `main.go` 会调用 `TestModel` 函数（位于 `testModel.go`），模拟用户输入并执行 Agent 流程。
 
@@ -138,6 +136,6 @@ AgentDemo/
 ## 计划安排
 
 1. **CLI 迁移到 RESTful API**: 计划使用 Hertz 框架将目前的命令行交互改造为标准的 HTTP 服务，提供 `/chat` 接口以支持更广泛的客户端接入。
-2. **Indexer 异步解析优化**:
-   - 快速索引：文件上传后，优先提取并索引基础文本内容（Content），确保用户能立刻检索到数据。
-   - 深度解析：在后台异步调用 LLM 对文档内容进行深度理解，提取摘要（Summary）和核心观点（Key Points），并更新到索引中，以增强语义检索的准确性。
+2. **Indexer 异步解析优化**: 
+   - **第一阶段**: 快速索引。文件上传后，优先提取并索引基础文本内容（Content），确保用户能立刻检索到数据。
+   - **第二阶段**: 深度解析。在后台异步调用 LLM 对文档内容进行深度理解，提取摘要（Summary）和核心观点（Key Points），并更新到索引中，以增强语义检索的准确性。

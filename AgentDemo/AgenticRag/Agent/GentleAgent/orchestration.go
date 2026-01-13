@@ -1,7 +1,7 @@
 package GentleAgent
 
 import (
-	"AIPracticePartner/AgentDemo/AgenticRag/Agent/BaseAgent"
+	"AIPracticePartner/AgenticRag/Agent/BaseAgent"
 	"context"
 
 	"github.com/cloudwego/eino/compose"

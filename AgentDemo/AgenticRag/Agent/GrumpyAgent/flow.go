@@ -1,7 +1,7 @@
 package GrumpyAgent
 
 import (
-	"AIPracticePartner/AgentDemo/AgenticRag/Agent/BaseAgent"
+	"AIPracticePartner/AgenticRag/Agent/BaseAgent"
 	"context"
 	"log"
 

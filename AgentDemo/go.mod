@@ -11,7 +11,7 @@ require (
 	github.com/cloudwego/eino-ext/components/embedding/openai v0.0.0-20260109062358-b9080dbc7bed
 	github.com/cloudwego/eino-ext/components/model/openai v0.1.7
 	github.com/cloudwego/eino-ext/components/tool/duckduckgo/v2 v2.0.0-20260109062358-b9080dbc7bed
-	github.com/elastic/go-elasticsearch/v8 v8.19.1
+	github.com/elastic/go-elasticsearch/v8 v8.16.0
 )
 
 require (

@@ -1,7 +1,7 @@
 package BaseAgent
 
 import (
-	"AIPracticePartner/AgentDemo/Api"
+	"AIPracticePartner/Api"
 	"context"
 	"fmt"
 	"log"
