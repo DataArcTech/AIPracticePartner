@@ -1,16 +1,15 @@
 package Api
 
 import (
+	rerank "AIPracticePartner/AgenticRag/Rerank"
+	"AIPracticePartner/AgenticRag/Retriever"
+	"AIPracticePartner/AgenticRag/Rewrite"
 	"context"
 	"fmt"
 	"time"
 
 	"github.com/cloudwego/eino/compose"
 	"github.com/cloudwego/eino/schema"
-
-	rerank "AIPracticePartner/AgentDemo/AgenticRag/Rerank"
-	"AIPracticePartner/AgentDemo/AgenticRag/Retriever"
-	"AIPracticePartner/AgentDemo/AgenticRag/Rewrite"
 )
 
 // RetrieverFunc 定义检索函数类型

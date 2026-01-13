@@ -1,10 +1,10 @@
 package main
 
 import (
-	"AIPracticePartner/AgentDemo/AgenticRag/Agent/BaseAgent"
-	"AIPracticePartner/AgentDemo/AgenticRag/Agent/GentleAgent"
-	"AIPracticePartner/AgentDemo/AgenticRag/Agent/GrumpyAgent"
-	"AIPracticePartner/AgentDemo/AgenticRag/RatingModel"
+	"AIPracticePartner/AgenticRag/Agent/BaseAgent"
+	"AIPracticePartner/AgenticRag/Agent/GentleAgent"
+	"AIPracticePartner/AgenticRag/Agent/GrumpyAgent"
+	"AIPracticePartner/AgenticRag/RatingModel"
 	"bufio"
 	"bytes"
 	"context"

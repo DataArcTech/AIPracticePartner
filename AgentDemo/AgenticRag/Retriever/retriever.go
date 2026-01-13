@@ -1,7 +1,7 @@
 package Retriever
 
 import (
-	"AIPracticePartner/AgentDemo/Common"
+	"AIPracticePartner/Common"
 	"context"
 	"fmt"
 

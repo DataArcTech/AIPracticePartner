@@ -1,7 +1,7 @@
 package Indexer
 
 import (
-	"AIPracticePartner/AgentDemo/Common"
+	"AIPracticePartner/Common"
 	"context"
 
 	"github.com/bytedance/sonic"
@@ -51,17 +51,13 @@ func newIndexer(ctx context.Context) (idr indexer.Indexer, err error) {
 				},
 			}
 
-			// 添加结构化字段到索引
+			// TODO 添加结构化字段到索引
 			if v, ok := doc.MetaData["summary"]; ok {
 				fields[Common.FieldSummary] = es8.FieldValue{Value: v}
 			}
 			if v, ok := doc.MetaData["keywords"]; ok {
 				fields[Common.FieldKeywords] = es8.FieldValue{Value: v}
 			}
-			/*			if v, ok := doc.MetaData["product_name"]; ok {
-							fields[Common.FieldProductName] = es8.FieldValue{Value: v}
-						}
-			*/
 			return fields, nil
 		},
 	}
